@@ -2,7 +2,8 @@
 
 echo Starting mailcatcher
 
-docker rm mailcatcher
+docker stop mailcatcher 2>/dev/null
+docker rm mailcatcher 2>/dev/null
 
 docker run -d \
 --name mailcatcher \
@@ -12,9 +13,21 @@ docker run -d \
 -e MAILCATCHER_PASSWORD=mailcatcher \
 hauptmedia/mailcatcher
 
+if [ $? != 0 ]; then
+	exit 1
+fi
+
 ip=$(docker-machine ip default)
+bold=$(tput bold)
+normal=$(tput sgr0)
 
 echo
-echo "SMTP available at ${ip}:25 (routing all smtp traffic into mailcatcher mailbox)"
-echo "Web-Mail available at http://${ip}:8082 (mailcatcher/mailcatcher)"
 
+echo "SMTP service which routes all incoming mails to the mailcatcher mailbox is available at "
+echo  ${bold} =\> ${ip}:25${normal}
+
+echo
+echo "Web-Mail is available at (User: mailcatcher / Password: mailcatcher) "
+echo ${bold} =\> http://${ip}:8082${normal}
+
+echo
