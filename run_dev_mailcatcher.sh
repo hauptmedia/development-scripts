@@ -1,7 +1,5 @@
 #!/bin/sh
 
-echo Starting mailcatcher
-
 docker stop mailcatcher 2>/dev/null
 docker rm mailcatcher 2>/dev/null
 
