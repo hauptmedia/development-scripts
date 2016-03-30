@@ -1,10 +1,12 @@
 #!/bin/sh
 
-docker stop mailcatcher 2>/dev/null
-docker rm mailcatcher 2>/dev/null
+CONTAINER_NAME=dev-mailcatcher
+
+docker stop $CONTAINER_NAME 2>/dev/null
+docker rm $CONTAINER_NAME 2>/dev/null
 
 docker run -d \
---name mailcatcher \
+--name $CONTAINER_NAME \
 -p 25:25 \
 -p 8082:80 \
 -e MAILCATCHER_USERNAME=mailcatcher \
