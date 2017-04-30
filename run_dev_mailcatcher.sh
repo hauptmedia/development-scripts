@@ -17,7 +17,7 @@ if [ $? != 0 ]; then
 	exit 1
 fi
 
-ip=$(docker-machine ip default)
+ip=127.0.0.1
 bold=$(tput bold)
 normal=$(tput sgr0)
 

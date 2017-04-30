@@ -9,7 +9,7 @@ docker run -d \
 -e TIMEZONE=Europe/Berlin \
 -e MYSQL_ROOT_PASSWORD=root \
 -p 3306:3306 \
--v /Users/julian/Projects/dev-mariadb:/var/lib/mysql \
+-v $HOME/dev-mariadb:/var/lib/mysql \
 --name $CONTAINER_NAME \
 hauptmedia/mariadb:10.1
 
