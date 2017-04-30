@@ -9,6 +9,7 @@ docker run -d \
 -e TIMEZONE=Europe/Berlin \
 -e MYSQL_ROOT_PASSWORD=root \
 -p 3306:3306 \
+-v /Users/julian/Projects/dev-mariadb:/var/lib/mysql \
 --name $CONTAINER_NAME \
 hauptmedia/mariadb:10.1
 
@@ -16,7 +17,7 @@ if [ $? != 0 ]; then
 	exit 1
 fi
 
-ip=$(docker-machine ip default)
+ip=127.0.0.1
 bold=$(tput bold)
 normal=$(tput sgr0)
 
