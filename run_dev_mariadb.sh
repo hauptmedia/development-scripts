@@ -9,9 +9,10 @@ docker run -d \
 -e TIMEZONE=Europe/Berlin \
 -e MYSQL_ROOT_PASSWORD=root \
 -p 3306:3306 \
--v $HOME/dev-mariadb:/var/lib/mysql \
+-v $HOME/dev-mariadb/var/lib/mysql:/var/lib/mysql \
+-v $HOME/dev-mariadb/etc/mysql/conf.d:/etc/mysql/conf.d \
 --name $CONTAINER_NAME \
-hauptmedia/mariadb:10.1
+mariadb:10.2
 
 if [ $? != 0 ]; then
 	exit 1
